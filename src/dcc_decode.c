@@ -42,7 +42,8 @@
 //                               Gloval variables are moved to global.h
 //                               Returns with accessory data, PoM data or F1..F4 data 
 //                               PoM is moved to cv_pom.c 
-//
+//            2020-09-08 v0.B ap SkipEven => SkipUnEven
+
 //
 // purpose:   flexible general purpose decoder for dcc
 //
@@ -295,7 +296,7 @@ unsigned char analyze_loc_14bit_message(t_message *new_dcc)
 //***************************************************************************************
 unsigned char analyze_basic_accessory_message(t_message *new_dcc)
 { unsigned int GlobalPortAddr;  // Similar to switch address on the LH100, but starts at 0 
-  unsigned char MaskedPort;	// In case of SkipEven, the even and uneven port are merged
+  unsigned char MaskedPort;	// In case of SkipUnEven, the even and uneven port are merged
   if ((new_dcc->dcc[1] >= 0b10000000) && (MyConfig == 0))
   { // BASIC ACCESSORY DECODER (with 9 bit addressing)
     // Note: this is the only form supported by the XPRESSNET specification and LENZ
@@ -340,9 +341,9 @@ unsigned char analyze_basic_accessory_message(t_message *new_dcc)
       GlobalPortAddr = (RecDecAddr * 4) + RecDecPort;
       // We will calculate the TargetDevice, which may be used by the remainder of the code
       // The TargetDevice will in many cases by equivalent to the RecDecPort, except:
-      // - if SkipEven is set 
+      // - if SkipUnEven is set
       // - the received addrress is higher than my accessory decoder's address (= we support more addresses)
-      if ((my_eeprom_read_byte(&CV.SkipEven)) == 1) {
+      if ((my_eeprom_read_byte(&CV.SkipUnEven)) == 1) {
         MaskedPort = ((RecDecPort & 0b00000010) >> 1);
         if (RecDecAddr >= My_Dec_Addr) {TargetDevice = (RecDecAddr - My_Dec_Addr) * 2 + MaskedPort;}
       }
@@ -445,7 +446,7 @@ void init_dcc_decode(void)
   DccSignalQuality = 0;		// Counter for DCC errors
   service_mode_state = 0;	// all bits off
   LastRecF1_F4 = 255;		// status of F0..F4 (= value last command)
-  if ((my_eeprom_read_byte(&CV.SkipEven)) == 1) {
+  if ((my_eeprom_read_byte(&CV.SkipUnEven)) == 1) {
     MyFirstAdrPlusCoil = (My_Dec_Addr * 4);
     MyLastAdrPlusCoil  = (My_Dec_Addr * 4) + (NUMBER_OF_DEVICES - 1) * 2 + 1;}
   else {

@@ -16,7 +16,7 @@
 //            2007-08-18 V0.2 kw default for myADDR high changed to 0x80
 //                               -> this means: unprogrammed    
 //            2011-01-15 V0.3 ap initial values have been included for the new CVs: System and
-//                               SkipEven. CV546 supports a new feedback method: RS-bus
+//                               SkipUnEven. CV546 supports a new feedback method: RS-bus
 //            2012-01-03 v0.4 ap New Cvs for GBM added.
 //            2013-03-12 v0.5 ap The ability is added to program the CVs on the main (PoM).
 //                               For this purpose, the feedback decoder listens to a loc decoder address
@@ -57,7 +57,7 @@
 						// 0 - Standard (such as Roco 10764)
 						// 1 - Lenz
    0,           // RSRetry      20  R/W    Number of RS-Bus retransmissions
-   0,           // SkipEven     21  R/W    Only Decoder Addresses 1, 3, 5 .... 1023 will be used
+   0,           // SkipUnEven   21  R/W    Only Decoder Addresses 2, 4, 6 .... 1024 will be used
    0,           // cv534        22  R      not used
    0,           // Search       23  R/W    If 1: decoder LED blinks
    0,           // cv536        24  R      not used

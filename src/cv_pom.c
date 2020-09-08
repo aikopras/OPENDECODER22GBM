@@ -70,7 +70,7 @@ unsigned char LocalCV24;		// Local copy of CV24 (PoMStart)
 // - CV9       (Accessory address - high)
 // - CV10      (RS-Bus address)
 // - CV11-CV18 (DelayIn1 .. DelayIn8)
-// - CV19-CV21 (CmdStation, RSRetry, SkipEven)
+// - CV19-CV21 (CmdStation, RSRetry, SkipUnEven)
 // - CV27      (DecType)
 // - CV33-CV51 (Various Feedback specific CVs)
 

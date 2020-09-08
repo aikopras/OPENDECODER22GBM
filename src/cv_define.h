@@ -60,7 +60,7 @@ typedef struct
     unsigned char DelayIn8;     //530  18  R/W    Same, for input 8. If 0, CV555 will be used instead
     unsigned char CmdStation;   //531  19  R/W    Command Station. 0 = standard / 1 = Lenz
     unsigned char RSRetry;      //532  20  R/W    Number of RS-Bus retransmissions
-    unsigned char SkipEven;     //533  21  R/W    Only Decoder Addresses 1, 3, 5 .... 1023 will be used
+    unsigned char SkipUnEven;   //533  21  R/W    Only Decoder Addresses 2, 4, 6 .... 1024 will be used
     unsigned char cv534;        //534  22  R      not used
     unsigned char Search;       //535  23  R/W*   If set to 1: decoder LED blinks. Value will be 0 after restart
     unsigned char cv536;        //536  24  R      not used
