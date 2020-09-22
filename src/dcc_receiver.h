@@ -1,3 +1,6 @@
+#ifndef _DCC_RECEIVER_H_
+#define _DCC_RECEIVER_H_
+
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder
@@ -31,7 +34,6 @@
 //                    dcc_receiver makes only the physical layer.
 //
 
-
 #define MAX_DCC_SIZE  6
 typedef struct
   {
@@ -49,3 +51,5 @@ void activate_ACK(unsigned char time);          // make prog or feedback ack
 
 // Added by AP             
 volatile unsigned char new_adc_requested;    // Flag to signal new ADC conversion should start 
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _TIMER1_H_
+#define _TIMER1_H_
+
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder
@@ -29,3 +32,5 @@ void init_timer1(void);
 // called by RS_Send()
 unsigned char time_for_next_feedback(void);
 unsigned char start_up_phase(void);
+
+#endif

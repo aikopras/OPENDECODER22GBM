@@ -1,3 +1,6 @@
+#ifndef _LED_H_
+#define _LED_H_
+
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder
@@ -35,3 +38,4 @@ void flash_led_fast(unsigned char count);
 void check_led_time_out(void);
 
 
+#endif

@@ -1,3 +1,6 @@
+#ifndef _CV_DATA_GBM_H
+#define _CV_DATA_GBM_H
+
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder2.2
@@ -26,6 +29,8 @@
 //                               CV Value is send back via the RS-Bus (a proprietary solution)
 //                               The trick to listen to a loc address is needed since LENZ equipment
 //                               nor to xpressnet spcification supports PoM for accessory decoders.
+//            2020-09-21 v0.6 ap Several changes such that software can now also be programmed
+//                               via the Arduino IDE. Software version updated to 0x10      
 //
 //-----------------------------------------------------------------------------
 // data in EEPROM:
@@ -40,7 +45,7 @@
    5,           // T_on_F2       4  R      Same dor relays 2
    5,           // T_on_F3       5  R      Same dor relays 3
    5,           // T_on_F4       6  R      Same dor relays 4
-   9,           // version       7  R      Software version. Should be > 7
+   0x10,        // version       7  R      Software version. Should be > 7
    0x0D,        // VID           8  R/W    Vendor ID (0x0D = DIY Decoder
                                           // write value 0x0D = 13 to reset CVs to default values
    0x80,        // myAddrH       9  R/W    Accessory Address high (3 bits)
@@ -112,3 +117,4 @@
    0,           // Polarization 51  R/W    If 0: J&K connected normal / if 1: J&K polarization changed
 
 
+#endif

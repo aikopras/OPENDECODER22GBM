@@ -1,3 +1,6 @@
+#ifndef _CV_POM_H_
+#define _CV_POM_H_
+
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder2
@@ -15,3 +18,5 @@
 void ResetDecoder(void);
 void cv_operation(unsigned char op_mode);
 void check_PoM_time_out(void);
+
+#endif

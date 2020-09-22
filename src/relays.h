@@ -1,3 +1,6 @@
+#ifndef _RELAYS_H_
+#define _RELAYS_H_
+
 //-------------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder
@@ -12,3 +15,4 @@ void set_relay(void);				// called from main
 void set_all_relays(unsigned char pos);		// called from occupancy
 void check_relays_time_out(void);		// called from main
 
+#endif

@@ -226,11 +226,11 @@ int main(void)
       if (semaphor_query(C_Received)) {	// DCC message received
         analyze_message(&incoming);
         if (CmdType >= 1) {   
-          if (CmdType == ANY_ACCESSORY_CMD) ;
-          if (CmdType == ACCESSORY_CMD)	set_relay();
-          if (CmdType == LOCO_F0F4_CMD)	set_relay();
-          if (CmdType == POM_CMD)	cv_operation(POM_CMD); 
-          if (CmdType == SM_CMD) 	cv_operation(SM_CMD); 
+          if (CmdType == ANY_ACCESSORY_CMD) {;}
+          if (CmdType == ACCESSORY_CMD)	{set_relay();}
+          if (CmdType == LOCO_F0F4_CMD)	{set_relay();}
+          if (CmdType == POM_CMD)	      {cv_operation(POM_CMD);}
+          if (CmdType == SM_CMD) 	      {cv_operation(SM_CMD);}
         }
         semaphor_get(C_Received);	// now take away the protection
       }

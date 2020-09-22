@@ -1,3 +1,6 @@
+#ifndef _DCC_DECODE_H_
+#define _DCC_DECODE_H_
+
 //*****************************************************************************************************
 //
 // file:      global.h
@@ -11,9 +14,7 @@
 // 	      2013-03-25 V0.5 ap: comletely modified structure
 //
 //*****************************************************************************************************
-
 void init_dcc_decode(void);
 void analyze_message(t_message *new);       // Sets the global CmdType variable plus possible others 
 
-
-
+#endif

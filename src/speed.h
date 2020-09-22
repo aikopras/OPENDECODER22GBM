@@ -1,3 +1,6 @@
+#ifndef _SPEED_H_
+#define _SPEED_H_
+
 //------------------------------------------------------------------------
 //
 // file:      speed.h
@@ -14,3 +17,4 @@
 void init_speed_track(void);
 void check_speed_tracks(void);
 
+#endif

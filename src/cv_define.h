@@ -1,3 +1,6 @@
+#ifndef _CV_DEFINE_H
+#define _CV_DEFINE_H
+
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder2.2
@@ -109,3 +112,6 @@ typedef struct
 
     
  } t_cv_record;
+
+
+#endif

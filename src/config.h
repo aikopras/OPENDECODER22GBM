@@ -1,3 +1,6 @@
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
+
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder2
@@ -34,9 +37,6 @@
 //
 //========================================================================
 //
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
-
 //========================================================================
 // 1. Project Definitions
 //========================================================================
@@ -46,24 +46,16 @@
 // #define OPENDECODER_VERSION   0x2F
 
 // Definition of target hardware:
-//   
-#define OPENDECODER22GBM 0x2F
+// This is needed to trigger ADC conversion
+#define TARGET_HARDWARE OPENDECODER22GBM
+
+// #define OPENDECODER22GBM 0x2F
 //  OPENDECODER22: this board has:
 //                 - ATmega8535, 16A, 32A, 164, 324 or 644 @ 11059200 Hz 
 //                 - 8 Feedback detectors, using ADC conversion
 //                 - RS-bus feedback
 //                 Note: port and pins are NOT compatible with other decoder 2 hardware
 //
-
-
-
-
-//-------------------------------------------------------------------------------------------
-// Decoder Model Configuration Check
-
-#if (TARGET_HARDWARE != OPENDECODER22GBM)
-  #warning: This code will only run with OPENDECODER22GBM
-#endif
 
 
 //========================================================================

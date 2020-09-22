@@ -1,3 +1,7 @@
+
+#ifndef _GLOBAL_H_
+#define _GLOBAL_H_
+
 //*****************************************************************************************************
 //
 // file:      global.h
@@ -75,3 +79,5 @@ extern unsigned char MyConfig;
 extern unsigned char MyType;
 extern enum CvOpType RecCvOperation;
 
+
+#endif

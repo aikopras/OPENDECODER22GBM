@@ -1,3 +1,6 @@
+#ifndef _RS_BUS_MESSAGES_H
+#define _RS_BUS_MESSAGES_H
+
 //------------------------------------------------------------------------
 //
 // file:      rs_bus_messages.h
@@ -15,3 +18,4 @@
 void format_and_send_RS_data_nibble(unsigned char data_byte);
 void send_CV_value_via_RSbus(unsigned char value);
 
+#endif

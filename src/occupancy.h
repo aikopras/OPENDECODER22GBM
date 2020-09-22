@@ -1,3 +1,6 @@
+#ifndef _OCCUPANCY_H_
+#define _OCCUPANCY_H_
+
 //------------------------------------------------------------------------
 //
 // file:      occupancy.h
@@ -15,3 +18,4 @@
 void init_occupancy(void);
 void handle_occupied_tracks(void);
 
+#endif

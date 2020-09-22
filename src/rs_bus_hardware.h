@@ -1,3 +1,6 @@
+#ifndef _RS_BUS_HARDWARE_H
+#define _RS_BUS_HARDWARE_H
+
 //------------------------------------------------------------------------
 //
 // file:      rs_bus_hardware.h
@@ -23,4 +26,4 @@ volatile unsigned char T_DelayOff;           // Used by adc_hardware as to time 
 // Hardware initialisation and ISR routines
 void init_RS_hardware(void);
 
-//------------------------------------------------------------------------------------------------
+#endif

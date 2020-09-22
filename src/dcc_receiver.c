@@ -423,5 +423,3 @@ ISR(TIMER0_OVF_vect)
         Recstate = 1<<RECSTAT_WF_PREAMBLE;
       }
   }
-
-

@@ -1,3 +1,6 @@
+#ifndef _ADC_HARDWARE_H_
+#define _ADC_HARDWARE_H_
+
 //--------------------------------------------------------------------------------------------
 //
 // file:      adc_hardware.h
@@ -31,3 +34,5 @@ typedef struct {			// we use temporary buffer to "pre-process" the adc_port valu
 } t_adc_result;
 
 extern t_adc_result adc_result[8];	// we have eight feedback signals
+
+#endif
