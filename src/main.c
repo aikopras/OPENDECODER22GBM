@@ -128,9 +128,7 @@ void DoProgramming(void) {
     if (Ticks_Waited <= 50) {                   // button is released within 5 sec => programme address
       WaitDebounceTime();                       // Busy wait debouncing time, for stable button release
       while(!PROG_PRESSED) {
-//write_lcd_string2("Ini");
         if (semaphor_get(C_Received)) {         // Message
-
           analyze_message(&incoming);
           // CmdType == ANY_ACCESSORY_CMD => Accessory command but not for my current address 
           // CmdType == ACCESSORY_CMD     => Accessory command for my current address 
@@ -173,17 +171,17 @@ void init_global(void)
   // Step 4: Determine the decoder address, based on CV1 and CV9.
   // On the web there is some confusion regarding the exact relationship between the
   // decoder address within the DCC decoder hardware and CV1 and CV9. The convention used by 
-  // my decoders is: My_Dec_Addr = CV1 - 1 + (CV9*64). 
-  // Note that this implies that the minimum value for CV1 should be 1 (and not 0).
+  // my decoders is: My_Dec_Addr = CV1  + (CV9*64).
+  // Note that this implies that the minimum value for CV1 is 0. However, if CV9 is 0 as well
+  // CV1 should start from 1.
   // Thus we have the following:
-  // The valid range of CV1 is 1..64
-  // The valid range of CV9 is 0..3  (or 128, if the decoder has not been initialised)
+  // The valid range of CV1 is 0..63
+  // The valid range of CV9 is 0..7  (or 128, if the decoder has not been initialised)
   unsigned char cv1 = my_eeprom_read_byte(&CV.myAddrL);
   unsigned char cv9 = my_eeprom_read_byte(&CV.myAddrH);
-  cv1 = cv1 - 1;
   cv9 = cv9 & 0x07; 					// Select only the last three bits
-  if (MyConfig != 1) My_Dec_Addr = (cv9 << 6) + cv1;	// Basic Acc. Addressing
-  else My_Dec_Addr = (cv9 << 8) + cv1;			// Extended Acc. Addressing
+  if (MyConfig != 1) My_Dec_Addr = (cv9 << 6) + cv1 - 1;	// Basic Acc. Addressing
+  else My_Dec_Addr = (cv9 << 8) + cv1 - 1;			// Extended Acc. Addressing
   // The valid range of My_Dec_Addr is 0..511 (0..255 if Xpressnet is used).
   // Note that My_Dec_Addr will be 0 if the decoder has not been initialised  
   if ((cv1 > 63)) My_Dec_Addr = INVALID_DEC_ADR;
