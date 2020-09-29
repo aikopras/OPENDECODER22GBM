@@ -49,3 +49,4 @@ Thus we have the following:
 
 The easiest way to program the accessory address for the relays is to use the "Relays"
 tab of the "Programmer GBM" software (this software has been developed for MAC-OS).
+See: https://github.com/aikopras/Programmer-GBM-POM
