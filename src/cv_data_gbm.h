@@ -69,10 +69,10 @@
    0,           // Restart      25  R/W    To restart (as opposed to reset) the decoder: use after PoM write
    0,           // DccQuality   26  R/W    DCC Signal Quality
    0b00110000,  // DecType      27  R/W    Decoder Type
-						// bx00110000 - Track Occupancy decoder
-						// bx00110001 - Track Occupancy decoder with reverser board
-						// bx00110010 - Track Occupancy decoder with relays board
-						// bx00110100 - Track Occupancy decoder with speed measurement
+						// 0b00110000 - Track Occupancy decoder
+						// 0b00110001 - Track Occupancy decoder with reverser board
+						// 0b00110010 - Track Occupancy decoder with relays board
+						// 0b00110100 - Track Occupancy decoder with speed measurement
    0,           // BiDi         28  R      Bi-Directional Communication Config. Keep at 0.
                 // Config       29  R      similar to CV#29; for acc. decoders
       (1<<7)                                    // 1 = we are accessory
