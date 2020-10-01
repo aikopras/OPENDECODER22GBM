@@ -170,9 +170,10 @@ void init_global(void)
   MyType = my_eeprom_read_byte(&CV.DecType);
   // Step 4: Determine the decoder address, based on CV1 and CV9.
   // On the web there is some confusion regarding the exact relationship between the
-  // decoder address within the DCC decoder hardware and CV1 and CV9.
-  // The convention used by my decoders is: My_Dec_Addr = (CV9*64) + CV1 - 1
-  // The minimum value for CV1 is 0, but if CV9 is 0 as well then CV1 should start from 1.
+  // decoder address within the DCC decoder hardware and CV1 and CV9. The convention used by 
+  // my decoders is: My_Dec_Addr = CV1  + (CV9*64).
+  // Note that this implies that the minimum value for CV1 is 0. However, if CV9 is 0 as well
+  // CV1 should start from 1.
   // Thus we have the following:
   // The valid range of CV1 is 0..63
   // The valid range of CV9 is 0..7  (or 128, if the decoder has not been initialised)
@@ -217,6 +218,11 @@ int main(void)
 
     // check if the decoder has a valis RS-BUS address
     if ((My_RS_Addr == 0) || (My_RS_Addr > 128)) flash_led_fast(5);
+ 
+    // init_lcd();
+    // write_lcd_int(My_Dec_Addr);
+    // write_lcd_int2(my_eeprom_read_byte(&CV.myAddrL));
+    
     
     while(1) {
       if (PROG_PRESSED) DoProgramming();

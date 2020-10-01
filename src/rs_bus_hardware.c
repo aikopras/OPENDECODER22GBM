@@ -57,7 +57,7 @@
 // is idle, should be between 1,875 ms and 7 ms. A value of 4 ms therefore seems save.
 //
 // To send information back to the master, the proces that uses these basic RS-bus routines sets  
-// the RS-bus address (My_RS_Addr), assembles the information byte (RS_data2send) and, 
+// the RS-bus address (RS_Addr2Use), assembles the information byte (RS_data2send) and,
 // once ready, sets the "RS_data2send_flag". 
 // (Using a flag which the AVR can set within a single instruction, has as advantage that either
 // all or none of the data will be send; it is not possible that the hardware starts sending data
@@ -177,17 +177,17 @@ ISR(INT0_vect)
   // This ISR also resets T_RS_Idle, indicating that the command station is not idle.
   if (RS_data2send_flag)
   {
-    if ((My_RS_Addr == RS_address_polled) & (RS_Layer_1_active))
+    if ((RS_Addr2Use == RS_address_polled) & (RS_Layer_1_active))
      { 
        // We have data to send, it is our turn and the RS-bus is operating
        // Note: we must test RS_Layer_1_active, to ensure we skip the first initialisation cycle
-       if (My_RS_Addr > 0) USART_Data_Register = RS_data2send; 
+       if (RS_Addr2Use > 0) USART_Data_Register = RS_data2send;
        // Note: we could have exercised flow control over the output port by including:
        // while ((USART_Control_and_Status_Register_A & (1 << USART_Data_Register_Empty)) == 0) {};
        // In case of the RS-bus, such check is not needed, however. 
        RS_data2send_flag = 0;
      }
-     else if (My_RS_Addr > 128) {RS_data2send_flag = 0;} // drop data for impossible addresses
+     else if (RS_Addr2Use > 128) {RS_data2send_flag = 0;} // drop data for impossible addresses
   }
   RS_address_polled ++;		// Address of slave that gets his turn next 
   T_RS_Idle = 0;		// Reset the counter since the command station is not idle now  

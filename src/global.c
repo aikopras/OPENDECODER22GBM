@@ -68,28 +68,31 @@
 //*****************************************************************************************************
 // Decoder addresses
 unsigned int  My_Dec_Addr;	 // Can be used for switches and relays (depending on hardware)
-				 // Range: 0..511 (0..255 if Xpressnet is used)
-				 // Derived from CV1 and CV9
-unsigned char My_RS_Addr;	 // RS-bus address of this feedback module
-                                 // Range: 1..128 / 0 if not initialized
-				 // Derived from CV10
+				                     // Range: 0..511 (0..255 if Xpressnet is used)
+				                     // Derived from CV1 and CV9
+unsigned char My_RS_Addr;	   // RS-bus address of this feedback module
+                             // Range: 1..128 / 0 if not initialized
+				                     // Derived from CV10
+unsigned char RS_Addr2Use;   // RS-bus address used by RS bus hardware routines / over the RS-bus
+                             // This is the address seen by the command station (RS-bus receiver)
+                             // Is equal to, or 1 higher (in case of SkipUnEven) than My_RS_Addr
 unsigned int  My_Loco_Addr;	 // Decoder listens to loco address to facilitate PoM and F1..F4
-				 // Derived from LOCO_OFFSET and My_RS_Addr / My_Dec_Addr
+                             // Derived from LOCO_OFFSET and My_RS_Addr / My_Dec_Addr
 
 // Data extracted from received DCC packets.
-unsigned char CmdType;		 // Received DCC command. For possible values see #defines above
+unsigned char CmdType;         // Received DCC command. For possible values see #defines above
 // The next (accessory decoder) variables will be used by initialisation code
-unsigned int  RecDecAddr; 	 // Decoder Address as contained in the received DCC packet.
-unsigned char RecDecPort;	 // Two bit port number as contained in the received DCC packet.
+unsigned int  RecDecAddr;      // Decoder Address as contained in the received DCC packet.
+unsigned char RecDecPort;	     // Two bit port number as contained in the received DCC packet.
 // The next variables will be used by switch / relays specific code
-unsigned int  TargetDevice;	 // Targetted Device. A Device can be a switch, relay etc.
-unsigned int  TargetGate;	 // Targetted coil within that Port. Usually + or - / green or red
-unsigned char TargetActivate;    // Coil activation (value = 1) or deactivation (value = 0) 
+unsigned int  TargetDevice;    // Targetted Device. A Device can be a switch, relay etc.
+unsigned int  TargetGate;      // Targetted coil within that Port. Usually + or - / green or red
+unsigned char TargetActivate;  // Coil activation (value = 1) or deactivation (value = 0)
 // The next variables will be used for CV programming code
-unsigned int  RecLocoAddr; 	 // Received Loco Address. See below
-unsigned int  RecCvNumber; 	 // Configuration Variable to change. Range [0... ]
-unsigned char RecCvData;	 // CV Value te set. Range [0..255]
-enum CvOpType RecCvOperation;	 // CV Operation (most common: write or verify)
+unsigned int  RecLocoAddr;     // Received Loco Address. See below
+unsigned int  RecCvNumber;     // Configuration Variable to change. Range [0... ]
+unsigned char RecCvData;       // CV Value te set. Range [0..255]
+enum CvOpType RecCvOperation;  // CV Operation (most common: write or verify)
 
 // Other shared data
 unsigned char DccSignalQuality;	// Counts number of checksum errors 

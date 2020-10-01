@@ -203,6 +203,7 @@ void RS_connect(void) {
   {
     // send first nibble
     while (RS_data2send_flag) {};	// busy wait, till the USART ISR has send previous data
+    RS_Addr2Use = My_RS_Addr;
     nibble = (feedback[0].next_to_transmit<<DATA_0)
            | (feedback[1].next_to_transmit<<DATA_1)
            | (feedback[2].next_to_transmit<<DATA_2)
@@ -212,6 +213,7 @@ void RS_connect(void) {
     format_and_send_RS_data_nibble(nibble);      
     // send second nibble
     while (RS_data2send_flag) {};	// busy wait, till the USART ISR has send previous data
+    RS_Addr2Use = My_RS_Addr;
     nibble = (feedback[4].next_to_transmit<<DATA_0)
            | (feedback[5].next_to_transmit<<DATA_1)
            | (feedback[6].next_to_transmit<<DATA_2)
@@ -249,6 +251,7 @@ void send_feedbacks(void)
     // For the GBM we use a single feedback address for all 8 feedback signals
     if (send_needed(0,3)) 
     {
+      RS_Addr2Use = My_RS_Addr;
       nibble = (feedback[0].next_to_transmit<<DATA_0)
       | (feedback[1].next_to_transmit<<DATA_1)
       | (feedback[2].next_to_transmit<<DATA_2)
@@ -259,6 +262,7 @@ void send_feedbacks(void)
     } 
     else if (send_needed(4,7))
     {
+      RS_Addr2Use = My_RS_Addr;
       nibble = (feedback[4].next_to_transmit<<DATA_0)
       | (feedback[5].next_to_transmit<<DATA_1)
       | (feedback[6].next_to_transmit<<DATA_2)
