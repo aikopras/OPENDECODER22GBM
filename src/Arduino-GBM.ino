@@ -1,5 +1,5 @@
 /* Arduino-GBM.ino
- * 2020/09/21 AP 
+ * 2020/10/05 AP 
  * Software version (CV7) = 0x10 (set in cv_data_gbm.h
  *  
  * The code has been tested on the following boards: 
@@ -32,12 +32,12 @@
  * 
  * FIRST USE
  * =========
- * After the fuse bits are set and the program flashed, the decoder is ready to use.
- * However: since the Arduino IDE is unable to write the decoder's configuration variables
- * to EEPROM, at first use you have to press the decoder's program button for (more than) 
- * 5 seconds to initialise / overwrite the EEPROM.
- * After the EEPROM has been initialised, the LED is blinking to indicate that it expects a
- * an accessory (=switch) command to set the RS-Bus address. Push the button again, and
+ * After the fuse bits are set and the program is flashed, the decoder is ready to use.
+ * Note that the Arduino IDE is unable to flash the decoder's configuration variables to EEPROM.
+ * Thefore the main program performs a check after startup and, if necessary, initialises the EEPROM.
+ * For this check the value of two CVs is being tested: VID and VID_2 (so don't change these CVs).
+ * After the EEPROM has been initialised, the LED is blinking to indicate that it expects an
+ * accessory (=switch) command to set the RS-Bus address. Push the button again, and
  * the next accessory (=switch) address received will be used as RS-Bus address (1..127)
  *
  *
@@ -58,11 +58,15 @@
  * https://github.com/aikopras/Programmer-GBM-POM
  *
  *
+ *
  * NOTES
  * =====
+ * The default CV values can be resored by pushing the PROGRAM button for more tham 5 seconds.
+ * 
  * ALthough you can modify this code, it is recommended to NOT include and use Arduino libraries.
  * Resources (such as Timer 0), which are needed by the Arduino software, are already used by this software. 
  * ALthough changes can be made, porting this sofware to C++ is not trivial. 
+ * 
  * Note also that this .ino file should NOT include a call to setup() and loop(),
  * since the main loop is already called from main() (in main.c)
  * 

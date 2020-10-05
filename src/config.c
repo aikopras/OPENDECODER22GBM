@@ -87,18 +87,15 @@ volatile unsigned char Communicate = 0; // Communicationregister (for semaphors)
 
 
 
-    const unsigned char compilat[] PROGMEM = {"..... GBM ....."};
+    const unsigned char compilat[] PROGMEM = {"..... GBM AP ....."};
 
     t_cv_record CV EEMEM =
       {
         #include "cv_data_gbm.h"
       };
 
+
     const t_cv_record CV_PRESET PROGMEM =
       {
         #include "cv_data_gbm.h"
       };
-
-
-
-

@@ -200,29 +200,35 @@ void init_global(void)
 //*****************************************************************************************************
 int main(void)
   {
-    init_hardware();			// setup hardware ports
-    init_global();			// initialise the global variables
+    init_hardware();			   // setup hardware ports
+    init_global();			     // initialise the global variables
 
-    init_dcc_receiver();		// setup dcc receiver
+    init_dcc_receiver();		 // setup dcc receiver
     init_dcc_decode();
     init_timer1();
     init_RS_hardware();
     init_occupied_tracks();
     init_occupancy();
     
-    sei();				// Global enable interrupts
+    // init_lcd();           // Enabled for speed measurement and for debugging
+
+    sei();				           // Global enable interrupts
 
     if (MyType == TYPE_REVERSER) init_relays();
     if (MyType == TYPE_RELAYS)   init_relays();
     if (MyType == TYPE_SPEED)    init_speed_track();
 
-    // check if the decoder has a valis RS-BUS address
+    // Check if the EEPROM has been initialised. In case the program is compiled 
+    // and flashed using "make flash", the EEPROM should have been initialised during flash. 
+    // However, the Arduino IDE does not flash the EPPROM during program upload. 
+    // In that case we need to initialise from here. 
+    if ((my_eeprom_read_byte(&CV.VID) != 0x0D) || (my_eeprom_read_byte(&CV.VID_2) != 0x0D)) {
+      ResetDecoder();                             // Copy all default values to EEPROM
+      _restart();                                 // really hard exit
+    }
+
+    // check if the decoder has a valid RS-BUS address
     if ((My_RS_Addr == 0) || (My_RS_Addr > 128)) flash_led_fast(5);
- 
-    // init_lcd();
-    // write_lcd_int(My_Dec_Addr);
-    // write_lcd_int2(my_eeprom_read_byte(&CV.myAddrL));
-    
     
     while(1) {
       if (PROG_PRESSED) DoProgramming();

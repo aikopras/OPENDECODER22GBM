@@ -1,6 +1,3 @@
-#ifndef _CV_DATA_GBM_H
-#define _CV_DATA_GBM_H
-
 //------------------------------------------------------------------------
 //
 // OpenDCC - OpenDecoder2.2
@@ -13,7 +10,7 @@
 // 
 //------------------------------------------------------------------------
 //
-// file:      cv_data_gbm.h
+// file:      cv_data_gbm.h      -> Note that this is an include file, and not a normal header file
 // author:    Wolfgang Kufer / Aiko Pras
 // history:   2007-08-03 V0.1 kw start
 //            2007-08-18 V0.2 kw default for myADDR high changed to 0x80
@@ -31,8 +28,15 @@
 //                               nor to xpressnet spcification supports PoM for accessory decoders.
 //            2020-09-21 v0.6 ap Several changes such that software can now also be programmed
 //                               via the Arduino IDE. Software version updated to 0x10      
+//            2020-10-04 v0.7 ap The clause #ifndef _CV_DATA_GMB_ / #pragma once had to be removed,
+//                               since this is not a normal header (.h) file, but a piece of code that 
+//                               needs to be included multiple times!
+//                               It would be more logical to change the file extension to .ini, but
+//                               the Arduino IDE can only deal with .c, .cpp and .h files.
 //
 //-----------------------------------------------------------------------------
+// NOTE: Don't include an #pragma once clause!!
+//
 // data in EEPROM:
 // Note: the order of these data corresponds to physical CV-Address
 //       CV1 is coded at #00
@@ -115,6 +119,3 @@
    1,           // FB_S3        49  R/W    Feedback bit if Sensor 3 is active
    2,           // FB_S4        50  R/W    Feedback bit if Sensor 4 is active
    0,           // Polarization 51  R/W    If 0: J&K connected normal / if 1: J&K polarization changed
-
-
-#endif

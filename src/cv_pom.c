@@ -100,8 +100,7 @@ void ResetDecoder(void)
   for (i=0; i < sizeof(CV); i++)
   { // restore EEPROM only if value has been modified
     default_value = pgm_read_byte(pgmptr);
-    // Do not change the RS-Bus address (CV30)!
-    if ((my_eeprom_read_byte(eeptr) != default_value) && (i != (30-1)))
+    if (my_eeprom_read_byte(eeptr) != default_value)
     { my_eeprom_write_byte(eeptr, default_value);
       blink--;
       if (blink == 8) LED_OFF;
@@ -248,5 +247,3 @@ void check_PoM_time_out(void) {
     T_PoM_TimeOut = 0;			// Reintialise timeout (is strictly speaking not needed)
   }
 }
-
-
