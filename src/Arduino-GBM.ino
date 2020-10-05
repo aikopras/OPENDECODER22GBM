@@ -37,7 +37,7 @@
  * Thefore the main program performs a check after startup and, if necessary, initialises the EEPROM.
  * For this check the value of two CVs is being tested: VID and VID_2 (so don't change these CVs).
  * After the EEPROM has been initialised, the LED is blinking to indicate that it expects an
- * accessory (=switch) command to set the RS-Bus address. Push the button again, and
+ * accessory (=switch) command to set the RS-Bus address. Push the PROGRAM button, and
  * the next accessory (=switch) address received will be used as RS-Bus address (1..127)
  *
  *
