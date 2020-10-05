@@ -11,10 +11,8 @@ It can be compiled, linked and uploaded using the [<b>Makefile</b> file](/src/Ma
 
 
 ## First use
-After the fuse bits are set and the program flashed, the decoder is ready to use.
-In case the Arduino IDE was used to flash the program, the first time the decoder is used you have to press the decoder's program button for (more than) 5 seconds, to initialise / overwrite the EEPROM.
-In case the program was flashed using "make", this is not necessary since "make" is able to also flash the EEPROM,
-After the EEPROM has been initialised, the LED is blinking to indicate that it expects an accessory (=switch) command to set the RS-Bus address. Push the button again, and the next accessory (=switch) address received will be used as RS-Bus address (1..127)
+After the fuse bits are set and the program is flashed, the decoder is ready to use.
+Note that the Arduino IDE is unable to flash the decoder's configuration variables to EEPROM. Thefore the main program performs a check after startup and, if necessary, initialises the EEPROM. For this check the value of two CVs is being tested: VID and VID_2 (so don't change these CVs). After the EEPROM has been initialised, the LED is blinking to indicate that it expects an accessory (=switch) command to set the RS-Bus address. Push the PROGRAM button, and the next accessory (=switch) address received will be used as RS-Bus address (1..127)
 
 
 ## Configuration Variables (CVs)
