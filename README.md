@@ -3,7 +3,10 @@ Decoder for the DCC (Digital Command Control) system to detect if tracks are occ
 
 The code has been tested on the following boards:
  - [https://easyeda.com/aikopras/gbm-eagle](https://easyeda.com/aikopras/gbm-eagle)
+ - [https://oshwlab.com/aikopras/gbm-smd](https://oshwlab.com/aikopras/gbm-smd)
  - [https://easyeda.com/aikopras/vitrine-decoder](https://easyeda.com/aikopras/vitrine-decoder)
+
+![Decoder](GBM.png)
 
 A description of this decoder and related decoders can be found on [https://sites.google.com/site/dcctrains](https://sites.google.com/site/dcctrains).
 
