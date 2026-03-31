@@ -11,24 +11,30 @@ Voor het programmeren heb je nodig:
 
 - Arduino IDE (op je PC of laptop)
 - MightyCore (board support voor ATmega16)
-- Een **USBASP programmer**
+- Een **Arduino as ISP** of **USBASP** programmer
 - De GBM decoder print
 
-### USBASP programmer
+Een programmer is nodig omdat deze decoder **geen USB-poort** heeft.
 
-Een USBASP programmer is nodig omdat deze decoder **geen USB-poort** heeft.
+### Arduino as ISP programmer
+
+- Achtergrond informatie: https://docs.arduino.cc/built-in-examples/arduino-isp/ArduinoISP/
+- Je kan een bestaande Arduino (UNO, Nano) ombouwen tot een **Arduino as ISP**, maar je kan ze ook als kant-en-klare programmers kopen.
+
+
+### USBASP programmer
 
 - Officiële site: https://www.fischl.de/usbasp/
 - Je kunt kant-en-klare USBASP programmers kopen:
   - AliExpress (goedkoop)
   - Bij diverse Nederlandse leveranciers, zoals TinyTronics:
     https://www.tinytronics.nl/nl/communicatie-en-signalen/serieel/usb/usbasp-usb-avr-programmer-met-flatcable
-
+- Probleem: Windows kan problemen geven met de USB VID/PID van ISBasp
 ---
 
 ## Aansluiten van de programmer (ISP)
 
-De USBASP wordt aangesloten via de **ISP-connector** op de print.
+De programmer wordt aangesloten via de **ISP-connector** op de print.
 
 ![ISP pinout](PCB-ISP.png)
 
@@ -86,7 +92,7 @@ Gebruik deze instellingen:
 - **Compiler LTO**: enabled of disabled
 - **Pinout**: Standard pinout
 - **Bootloader**: No bootloader
-
+- **Programmer**: Arduino as ISP dan wel USBasp
 ---
 
 ## Stap 1 – Fuse bits instellen
@@ -110,7 +116,7 @@ Daarna:
 
 👉 **Sketch → Upload**
 
-De code wordt via de USBASP programmer in de ATmega16 geladen.
+De code wordt via de programmer in de ATmega16 geladen.
 
 ---
 
