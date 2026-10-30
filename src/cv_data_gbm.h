@@ -55,13 +55,13 @@
    0x80,        // myAddrH       9  R/W    Accessory Address high (3 bits)
    0,           // MyRsAddress  10  R/W    RS-bus address (=Main) for this decoder (1..128 / not set: 0)
    0,           // DelayIn1     11  R/W    Delay in 10ms steps before sending OFF signal (like Lenz)
-   0,           // DelayIn2     12  R/W    Same, for input 2. If 0, CV555 will be used instead
-   0,           // DelayIn3     13  R/W    Same, for input 3. If 0, CV555 will be used instead
-   0,           // DelayIn4     14  R/W    Same, for input 4. If 0, CV555 will be used instead
-   0,           // DelayIn5     15  R/W    Same, for input 5. If 0, CV555 will be used instead
-   0,           // DelayIn6     16  R/W    Same, for input 6. If 0, CV555 will be used instead
-   0,           // DelayIn7     17  R/W    Same, for input 7. If 0, CV555 will be used instead
-   0,           // DelayIn8     18  R/W    Same, for input 8. If 0, CV555 will be used instead
+   0,           // DelayIn2     12  R/W    Same, for input 2. If 0, CV34 will be used instead
+   0,           // DelayIn3     13  R/W    Same, for input 3. If 0, CV34 will be used instead
+   0,           // DelayIn4     14  R/W    Same, for input 4. If 0, CV34 will be used instead
+   0,           // DelayIn5     15  R/W    Same, for input 5. If 0, CV34 will be used instead
+   0,           // DelayIn6     16  R/W    Same, for input 6. If 0, CV34 will be used instead
+   0,           // DelayIn7     17  R/W    Same, for input 7. If 0, CV34 will be used instead
+   0,           // DelayIn8     18  R/W    Same, for input 8. If 0, CV34 will be used instead
    1,           // CmdStation   19  R/W    To handle manufacturer specific address coding
 						// 0 - Standard (such as Roco 10764)
 						// 1 - Lenz
@@ -71,7 +71,7 @@
    0,           // Search       23  R/W    If 1: decoder LED blinks
    0,           // cv536        24  R      not used
    0,           // Restart      25  R/W    To restart (as opposed to reset) the decoder: use after PoM write
-   0,           // DccQuality   26  R/W    DCC Signal Quality
+   0,           // DccQuality   26  R      DCC Signal Quality
    0b00110000,  // DecType      27  R/W    Decoder Type
 						// 0b00110000 - Track Occupancy decoder
 						// 0b00110001 - Track Occupancy decoder with reverser board
@@ -103,11 +103,11 @@
 
 // CVs used by the Speed Measurement specific variant of the Track Occupancy Decoder
    0,           // Speed1_Out   37  R/W    Track number (1..8) for the first speed measurement track (0=none)
-   0,           // Speed1_LL    38  R/W    Length in cm of the first speed measurement track (low order byte)
-   0,           // Speed1_LH    39  R/W    Length in cm of the first speed measurement track (high order byte)
+   0,           // Speed1_LL    38  R/W    Length in mm of the first speed measurement track (low order byte)
+   0,           // Speed1_LH    39  R/W    Length in mm of the first speed measurement track (high order byte)
    0,           // Speed2_Out   40  R/W    Track number (1..8) for the second speed measurement track (0=none)
-   0,           // Speed2_LL    41  R/W    Length in cm of the second speed measurement track (low order byte)
-   0,           // Speed2_LH    42  R/W    Length in cm of the second speed measurement track (high order byte)
+   0,           // Speed2_LL    41  R/W    Length in mm of the second speed measurement track (low order byte)
+   0,           // Speed2_LH    42  R/W    Length in mm of the second speed measurement track (high order byte)
 
 // CVs used by the Reverser specific variant of the Track Occupancy Decoder
    0,           // FB_A         43  R/W    Feedback bit if track A is occupied

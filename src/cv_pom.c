@@ -57,7 +57,7 @@ unsigned int  T_PoM_TimeOut = 0;	// Used to time out PoM retransmission messages
 // should not be stored in EEPROM. Still we have to maintain these variables, to allow
 // rerieving their value via a CV verify command.
 unsigned char LocalCV23;		// Local copy of CV23 (find function: LED blinks)
-unsigned char LocalCV24;		// Local copy of CV24 (PoMStart)
+unsigned char LocalCV24;		// Local copy of CV24
 
 
 //***************************************************************************************
@@ -130,7 +130,7 @@ void cv_verify_pom(void)
   // and send the value stored in the decoder back.
   // Note that all CV values can be retrieved from EEPROM, except:
   // - CV23 (find function which blinks led)
-  // - CV24 (PoM Start)
+  // - CV24
   // - CV26 (DccQuality)
   if      (RecCvNumber == (23-1)) send_CV_value_via_RSbus(LocalCV23);
   else if (RecCvNumber == (24-1)) send_CV_value_via_RSbus(LocalCV24);

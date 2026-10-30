@@ -54,13 +54,13 @@ typedef struct
     unsigned char myAddrH;      //521   9  R/W    Accessory Address high (3 bits)
     unsigned char MyRsAddr;     //522  10  R/W    RS-bus address of this feedback decoder
     unsigned char DelayIn1;     //523  11  R/W    Delay in 10ms steps before sending OFF signal (like Lenz)
-    unsigned char DelayIn2;     //524  12  R/W    Same, for input 2. If 0, CV555 will be used instead
-    unsigned char DelayIn3;     //525  13  R/W    Same, for input 3. If 0, CV555 will be used instead
-    unsigned char DelayIn4;     //526  14  R/W    Same, for input 4. If 0, CV555 will be used instead
-    unsigned char DelayIn5;     //527  15  R/W    Same, for input 5. If 0, CV555 will be used instead
-    unsigned char DelayIn6;     //528  16  R/W    Same, for input 6. If 0, CV555 will be used instead
-    unsigned char DelayIn7;     //529  17  R/W    Same, for input 7. If 0, CV555 will be used instead
-    unsigned char DelayIn8;     //530  18  R/W    Same, for input 8. If 0, CV555 will be used instead
+    unsigned char DelayIn2;     //524  12  R/W    Same, for input 2. If 0, CV34 will be used instead
+    unsigned char DelayIn3;     //525  13  R/W    Same, for input 3. If 0, CV34 will be used instead
+    unsigned char DelayIn4;     //526  14  R/W    Same, for input 4. If 0, CV34 will be used instead
+    unsigned char DelayIn5;     //527  15  R/W    Same, for input 5. If 0, CV34 will be used instead
+    unsigned char DelayIn6;     //528  16  R/W    Same, for input 6. If 0, CV34 will be used instead
+    unsigned char DelayIn7;     //529  17  R/W    Same, for input 7. If 0, CV34 will be used instead
+    unsigned char DelayIn8;     //530  18  R/W    Same, for input 8. If 0, CV34 will be used instead
     unsigned char CmdStation;   //531  19  R/W    Command Station. 0 = standard / 1 = Lenz
     unsigned char RSRetry;      //532  20  R/W    Number of RS-Bus retransmissions
     unsigned char SkipUnEven;   //533  21  R/W    Only Decoder Addresses 2, 4, 6 .... 1024 will be used
@@ -69,7 +69,7 @@ typedef struct
     unsigned char cv536;        //536  24  R      not used
     unsigned char Restart;      //537  25  R/W*   To restart (as opposed to reset) the decoder: use after PoM write
     unsigned char DccQuality;   //538  26  R      DCC Signal Quality
-    unsigned char DecType;      //539  27  R      Decoder Type (see global.h for possible values)
+    unsigned char DecType;      //539  27  R/W    Decoder Type (see global.h for possible values)
     unsigned char BiDi;         //540  28  R      Bi-Directional Communication Config. Since BiDi is not used, keep at 0
     unsigned char Config;       //541  29  R      Accessory Decoder configuration (similar to CV#29)
     unsigned char VID_2;        //542  30  R      Second Vendor ID, to detect AP decoders
@@ -93,11 +93,11 @@ typedef struct
 
     // CVs used by the Speed Measurement specific variant of the Track Occupancy Decoder
     unsigned char Speed1_Out;   //549  37  R/W    Track number (1..8) for the first speed measurement track (0=none)
-    unsigned char Speed1_LL;    //550  38  R/W    Length in cm of the first speed measurement track (low order byte)
-    unsigned char Speed1_LH;    //551  39  R/W    Length in cm of the first speed measurement track (high order byte)
+    unsigned char Speed1_LL;    //550  38  R/W    Length in mm of the first speed measurement track (low order byte)
+    unsigned char Speed1_LH;    //551  39  R/W    Length in mm of the first speed measurement track (high order byte)
     unsigned char Speed2_Out;   //552  41  R/W    Track number (1..8) for the second speed measurement track (0=none)
-    unsigned char Speed2_LL;    //553  41  R/W    Length in cm of the second speed measurement track (low order byte)
-    unsigned char Speed2_LH;    //554  42  R/W    Length in cm of the second speed measurement track (high order byte)
+    unsigned char Speed2_LL;    //553  41  R/W    Length in mm of the second speed measurement track (low order byte)
+    unsigned char Speed2_LH;    //554  42  R/W    Length in mm of the second speed measurement track (high order byte)
     
     // CVs used by the Reverser specific variant of the Track Occupancy Decoder
     unsigned char FB_A;         //558  43  R/W    Feedback bit if track A is occupied
