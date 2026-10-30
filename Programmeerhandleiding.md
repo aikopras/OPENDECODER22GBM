@@ -29,7 +29,7 @@ Een programmer is nodig omdat deze decoder **geen USB-poort** heeft.
   - AliExpress (goedkoop)
   - Bij diverse Nederlandse leveranciers, zoals TinyTronics:
     https://www.tinytronics.nl/nl/communicatie-en-signalen/serieel/usb/usbasp-usb-avr-programmer-met-flatcable
-- Probleem: Windows kan problemen geven met de USB VID/PID van ISBasp
+- Probleem: Windows kan problemen geven met de USB VID/PID van USBasp
 ---
 
 ## Aansluiten van de programmer (ISP)
